@@ -1,2 +1,11 @@
-<h3>Welcome</h3>
+
+
+
+<div class="jumbotron">
+	<h1>Welcome to Familio</h1>
+	<p>A really simple photo sharing web app.</p>
+  	<p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+<% if current_user && current_user.admin? %>
 <p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<% end %>

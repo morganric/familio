@@ -1,2 +1,16 @@
-<h3>User</h3>
-<p>Email: <%= @user.email if @user.email %></p>
+<h1>
+	Admin for: <%= @user.name.capitalize if @user.name %>
+</h1>
+
+<p class="well">
+	Email: <%= @user.email if @user.email %>
+</p>
+
+<h2>Photos</h2>
+<hr/>
+ <% @user.photos.each do |photo| %>
+  <section class="well">
+	  <%= link_to image_tag(photo.image.url(:small)), photo %>
+	  <br/>
+  </section>
+ <% end %>

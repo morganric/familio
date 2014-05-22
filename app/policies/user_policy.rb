@@ -6,6 +6,10 @@ class UserPolicy
     @record = record
   end
 
+  def show?
+    @user.admin?
+  end
+
   def index?
     @user.admin?
   end

@@ -15,7 +15,22 @@ gem 'pg'
 gem 'pundit'
 gem 'simple_form'
 gem 'thin'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'therubyracer'
+gem 'debugger'
+gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
+# gem 'bootswatch-rails'
+
+# twitter bootstrap css & javascript toolkit
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+
+# twitter bootstrap helpers gem, e.g., alerts etc...
+gem 'twitter-bootswatch-rails-helpers'
+
 group :development do
+  gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19]
   gem 'guard-bundler'
