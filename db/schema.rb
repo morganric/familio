@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521192528) do
+ActiveRecord::Schema.define(version: 20140522161958) do
 
   create_table "photos", force: true do |t|
     t.string   "title"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20140521192528) do
   end
 
   add_index "photos", ["slug"], name: "index_photos_on_slug", unique: true
+
+  create_table "profiles", force: true do |t|
+    t.string   "display_name"
+    t.text     "bio"
+    t.string   "image"
+    t.string   "website"
+    t.date     "dob"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
+
+  add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

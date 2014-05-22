@@ -9,7 +9,7 @@
       <span class="col-md-10 pull-left">
         <h4>
           <%= link_to photo.title, photo %>
-          <small>by <%= link_to photo.user.name, photo.user %></small>
+          <small>by <%= link_to photo.user.profile.display_name, vanity_url_path(photo.user.name) %></small>
         </h4>
         <p class="">
         <%= photo.description %>
