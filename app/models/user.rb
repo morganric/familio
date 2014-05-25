@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :photos
+  has_many :videos
   has_one :profile
 
 

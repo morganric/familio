@@ -1,0 +1,15 @@
+/*@import "bootswatch/cerulean/variables";*/
+/*@import "bootswatch/journal/variables";*/
+/*@import "bootstrap";*/
+/* line 14, /Users/richardmorgan/sites/ruby/apps/familio/app/assets/stylesheets/application.css.scss */
+body {
+  padding-top: 60px;
+}
+
+/*@import "bootstrap-responsive";*/
+/*@import "bootswatch/cerulean/bootswatch";*/
+/*@import "base";*/
+/* line 25, /Users/richardmorgan/sites/ruby/apps/familio/app/assets/stylesheets/application.css.scss */
+ul li {
+  list-style-type: none !important;
+}

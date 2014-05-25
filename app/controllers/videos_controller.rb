@@ -10,6 +10,8 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+      @original_video = @video.panda_video
+      @h264_encoding = @original_video.encodings["h264"]
   end
 
   # GET /videos/new
@@ -24,7 +26,20 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
+
+    # @video = Video.create!(params[:video])
+    #           redirect_to :action => :show, :id => @video.id
     @video = Video.new(video_params)
+    video = Panda::Video.create!(:file => @video.file)
+    @video.panda_video_id = video.encodings['h264'].video_id
+
+    if video.encodings['h264'].status == "success"
+      @video.image = video.encodings['h264'].url.gsub('.mp4', '_1.jpg')
+      @video.file = video.encodings['h264'].url
+    else
+      @video.image = ""
+      @video.file = ""
+    end
 
     respond_to do |format|
       if @video.save
@@ -69,6 +84,7 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:title, :description, :file, :plays)
+      params.require(:video).permit(:title, :description, :file, :plays, 
+        :panda_video_id, :slug, :size, :user_id, :public, :image)
     end
 end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+   match "/panda/authorize_upload", :to => "panda#authorize_upload", via: [:get, :post]
+            resources :videos
+
   resources :photos
 
   devise_for :users

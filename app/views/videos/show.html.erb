@@ -1,35 +1,18 @@
-<link href="//vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
-<script src="//vjs.zencdn.net/4.6/video.js"></script>
+<h2><%= @video.title %></h2>
 
-<h1>
-  <%= @video.title %>
-</h1>
+<p><%= h @video.panda_video.status %></p>
+<p><%= h @video.panda_video.inspect %></p>
+<p><%= h @video.panda_video.url %></p>
 
-<video id="example_video_1" class="video-js vjs-default-skin"
-  controls preload="auto" width="640" height="264"
-  poster=""
-  data-setup='{"example_option":true}'>
- <source src="<%= @video.file %>" type='video/mp4' />
- <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-</video>
-<hr/>
-<audio src="<%= @video.file %>" controls></audio>
-<hr/>
-<video id="movie" width="320" height="240" preload="none"
-            poster="http://s3.amazonaws.com/YOUR_S3_BUCKET/ENCODING_ID_4.jpg" controls>
-            <source src="<%= @video.file.url %>" type="video/mp4">
-</video>
+<% if @video.panda_video.status === "success" %>
+            <video id="movie" width="<%= @video.panda_video.width %>" height="<%= @video.panda_video.height %>" preload="none" 
+              poster="<%= @video.panda_video.url.gsub('.mp4','_1.jpg') %>" controls>
+              <source src="<%= @video.panda_video.url %>" type="video/mp4">
+            </video>
+          <% end %>
 
-<p>
-  <strong>Description:</strong>
+<p class="well">
   <%= @video.description %>
-</p>
-
-<p>
-  <strong>File:</strong>
-  <%= @video.file %>
-</p>
-
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+  <br/>
+  <%= link_to 'Edit', edit_video_path(@video) %>
+</p>  

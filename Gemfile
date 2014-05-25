@@ -20,6 +20,7 @@ gem 'cloudinary'
 gem 'therubyracer'
 gem 'debugger'
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+gem 'panda', '~> 1.6.0'
 
 # gem 'bootswatch-rails'
 
