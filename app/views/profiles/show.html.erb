@@ -1,0 +1,103 @@
+
+<div class="clearfix col-md-12 row">
+  <section class="col-md-4" >
+
+    <p class="img-rounded">
+      <%= image_tag @profile.image.url(:square) %>
+    </p>
+
+    <% if current_user && current_user.admin? %>
+      <p>
+        <strong>Dob:</strong>
+        <%= @profile.dob %>
+      </p>
+    <% end %>
+    <p>
+      <strong>Location:</strong>
+      <%= @profile.location %>
+    </p>
+
+  </section>
+  <section class="col-md-8" >
+    <h1>
+      <%= @profile.display_name %>
+    </h1>
+
+    <section class="well">
+      <%= @profile.bio %>
+      <p>
+        <%= link_to @profile.website, "#{@profile.website}", :target => "_blank" %>
+      </p>
+      <p class="pull-right">
+        <% if current_user && current_user == @profile.user %>
+        <%= link_to 'Edit', edit_profile_path(@profile.user.name) %>
+        <% end %>
+      </p>
+      <br/>
+    </section>
+
+
+    <section>
+      <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+        <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
+        <% if current_user %>
+          <% if current_user == @profile.user || current_user.admin? %>
+            <li class=""><a href="#all" data-toggle="tab">All</a></li>
+        <!-- <li class="disabled"><a>Disabled</a></li> -->
+          <% end %>
+        <% end %>
+
+      </ul>
+
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="photos">
+        <% @public_photos.each do |photo| %>
+            <article class="clearfix well">
+              <span class="col-md-2 pull-left">
+                  <%= link_to image_tag(photo.image.url(:small), class: "img-rounded"), vanity_photo_url_path(:user_id => photo.user.name, :id => photo.slug) %>
+              </span>
+              <span class="col-md-4 ">
+                <h4>
+                  <%= link_to photo.title, vanity_photo_url_path(:user_id => photo.user.name, :id => photo.slug) %>
+                  <small>by <%= link_to photo.user.profile.display_name, vanity_url_path(photo.user.name) %></small>
+                </h4>
+                <p class="">
+                <%= photo.description %>
+                </p>
+              </span>
+              <span class="col-md-2 pull-right">
+                <span class="label label-default"><i class="icon icon-white icon-eye"></i><%= pluralize(photo.views, ' views') %></span>
+              </span>
+          </article>
+        <% end %>
+        </div>  
+        <div class="tab-pane fade" id="all">
+          <% if current_user %>
+          <% if current_user == @profile.user || current_user.admin? %>
+            <% @profile.user.photos.each do |photo| %>
+              <article class="clearfix well">
+                <span class="col-md-2 pull-left">
+                    <%= link_to image_tag(photo.image.url(:small), class: "img-rounded"), vanity_photo_url_path(:user_id => photo.user.name, :id => photo.slug) %>
+                </span>
+                <span class="col-md-4 ">
+                  <h4>
+                    <%= link_to photo.title, vanity_photo_url_path(:user_id => photo.user.name, :id => photo.slug) %>
+                    <small>by <%= link_to photo.user.profile.display_name, vanity_url_path(photo.user.name) %></small>
+                  </h4>
+                  <p class="">
+                  <%= photo.description %>
+                  </p>
+                </span>
+                <span class="col-md-2 pull-right">
+                  <span class="label label-default"><i class="icon icon-white icon-eye"></i><%= pluralize(photo.views, ' views') %></span>
+                </span>
+            </article>
+          <% end %>
+         <% end %>
+         <% end %>
+      </div>
+    </div>
+    </section>
+  </section>
+
+</div>

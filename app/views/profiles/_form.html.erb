@@ -1,0 +1,17 @@
+<%= simple_form_for(@profile) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :display_name %>
+    <%= f.input :bio %>
+    <%= f.input :image %>
+    <%= f.input :website %>
+    <%= f.input :dob %>
+    <%= f.input :location %>
+    <%= f.input :user_id, as: :hidden %>
+  </div>
+  <br/>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

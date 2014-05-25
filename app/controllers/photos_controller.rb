@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all.order('views DESC')
+    @photos = Photo.where(:public  => true).order('views DESC')
   end
 
   # GET /photos/1

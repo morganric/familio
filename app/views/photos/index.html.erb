@@ -1,22 +1,33 @@
-<h1>All Photos</h1>
+<h1>Photo Of The Day</h1>
 <hr/>
-<% @photos.each do |photo| %>
 
-    <article class="clearfix well">
-      <span class="col-md-1 pull-left">
-          <%= link_to image_tag(photo.image.url(:small), class: "img-rounded"), photo %>
+<article class="row">
+
+<div class="col-md-8">
+  <% @photos.each do |photo| %>
+    <section class="clearfix well">
+      <span class="col-md-2 pull-left">
+          <%= link_to image_tag(photo.image.url(:small), class: "img-rounded"), vanity_photo_url_path(:user_id => photo.user.name, :id => photo.slug) %>
       </span>
-      <span class="col-md-10 pull-left">
+      <span class="col-md-4 pull-left">
         <h4>
-          <%= link_to photo.title, photo %>
-          <small>by <%= link_to photo.user.name, photo.user %></small>
+          <%= link_to photo.title, vanity_photo_url_path(:user_id => photo.user.name, :id => photo.slug) %>
+          <small>by <%= link_to photo.user.profile.display_name, vanity_url_path(photo.user.name) %><br/>
+           on <%= photo.created_at.to_formatted_s(:short)  %></small>
         </h4>
         <p class="">
         <%= photo.description %>
         </p>
       </span>
-      <span class="col-md-1 pull-right">
+      <span class="col-md-2 pull-right">
         <span class="label label-default"><i class="icon icon-white icon-eye"></i><%= pluralize(photo.views, ' views') %></span>
       </span>
-  </article>
-<% end %>
+    </section>
+  <% end %>  
+</div>
+<div class="col-md-4">
+  
+
+</div>
+
+</article>
