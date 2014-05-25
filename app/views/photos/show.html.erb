@@ -3,7 +3,7 @@
 <div class="col-md-12 row">
   <h1>
     <%= @photo.title %>
-    <small>by <%= link_to @photo.user.name, @photo.user  %></small>
+    <small>by <%= link_to @photo.user.name, vanity_url_path(@photo.user.profile)  %></small>
   </h1>
   <section class="col-md-6 row">
     <%= image_tag @photo.image.url(:standard), class: "img-thumbnail" %>  
@@ -17,7 +17,7 @@
     </p>
     <p class="pull-right">
     <% if current_user && current_user.admin? %>
-    <%= link_to 'Edit', edit_photo_path(@photo) %> | <%= link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit', edit_photo_path(:photo_id => @photo) %> | <%= link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     </p>
   </section>

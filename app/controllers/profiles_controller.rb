@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @public_photos = Photo.all.where(:public => true, :user_id => @profile.user.id)
   end
 
   # GET /profiles/new
