@@ -4,3 +4,18 @@
  *= require darkly/loader
  *= require darkly/bootswatch
 */
+
+ul li {
+	list-style-type: none !important;
+	/*padding: 5px;*/
+}
+
+ul {
+	padding-left:0px;
+	margin-top: 10px !important;
+	}
+
+.img-nav li {
+	display:inline;
+	margin-right: 5px;
+}

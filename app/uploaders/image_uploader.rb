@@ -57,6 +57,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [50, 50]
   end
 
+  version :sepia_thumb do
+    eager
+    cloudinary_transformation :transformation => [
+        {:width => 50, :height => 50, :crop => :fill, :effect => "sepia"}]
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list

@@ -6,7 +6,33 @@
     <small>by <%= link_to @photo.user.name, vanity_url_path(@photo.user.profile)  %></small>
   </h1>
   <section class="col-md-6 row">
-    <%= image_tag @photo.image.url(:standard), class: "img-thumbnail" %>  
+    <%= image_tag @photo.image.url(:standard), class: "img-thumbnail" %> 
+      <ul class="img-nav">
+         <li>
+          <%= image_tag @photo.image.url(:sepia_thumb), class: "img-thumbnail"%>
+        </li>
+        <li>
+          <%= image_tag @photo.image.url(:sepia_thumb), class: "img-thumbnail"%>
+        </li>
+        <li>
+          <%= image_tag @photo.image.url(:sepia_thumb), class: "img-thumbnail"%>
+        </li>
+        <li>
+          <%= image_tag @photo.image.url(:sepia_thumb), class: "img-thumbnail"%>
+        </li>
+        <li>
+          <%= image_tag @photo.image.url(:sepia_thumb), class: "img-thumbnail"%>
+        </li>
+        <li>
+          <%= image_tag @photo.image.url(:sepia_thumb), class: "img-thumbnail"%>
+        </li>
+        <li>
+          <%= image_tag @photo.image.url(:sepia_thumb), class: "img-thumbnail"%>
+        </li>
+        <li>
+          <%= image_tag @photo.image.url(:sepia_thumb), class: "img-thumbnail"%>
+        </li>
+      </ul> 
   </section>
   <section class="well col-md-6 pull-right" >
     <span class="pull-right label label-default">
