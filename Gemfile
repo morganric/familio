@@ -27,6 +27,10 @@ gem 'twitter-bootswatch-rails', '~> 3.1.1'
 # twitter bootstrap helpers gem, e.g., alerts etc...
 gem 'twitter-bootswatch-rails-helpers'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
