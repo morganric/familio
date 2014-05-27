@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 20140525152335) do
+=======
+ActiveRecord::Schema.define(version: 20140523091515) do
+>>>>>>> Stashed changes
 
   create_table "photos", force: true do |t|
     t.string   "title"
@@ -77,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140525152335) do
     t.integer  "plays"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< Updated upstream
     t.boolean  "public"
     t.string   "image"
     t.integer  "user_id"
@@ -88,4 +93,8 @@ ActiveRecord::Schema.define(version: 20140525152335) do
 
   add_index "videos", ["slug"], name: "index_videos_on_slug", unique: true
 
+=======
+  end
+
+>>>>>>> Stashed changes
 end

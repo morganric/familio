@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+<<<<<<< Updated upstream
 
    match "/panda/authorize_upload", :to => "panda#authorize_upload", via: [:get, :post]
             resources :videos
 
+=======
+  resources :video
+>>>>>>> Stashed changes
   resources :photos
 
   devise_for :users
