@@ -1,3 +1,7 @@
+ENV["ADMIN_NAME"] = 'App Admin'
+ENV["ADMIN_EMAIL"] = 'morganric@gmail.com'
+ENV["ADMIN_PASSWORD"] = '3mb3dtr339'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
